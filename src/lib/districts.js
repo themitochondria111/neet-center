@@ -1,0 +1,28 @@
+// West Bengal Districts for NEET
+export const WB_DISTRICTS = [
+    "ALIPURDUAR",
+    "BANKURA",
+    "BIRBHUM",
+    "COOCH BEHAR",
+    "DAKSHIN DINAJPUR",
+    "DARJEELING",
+    "HOOGHLY",
+    "HOWRAH",
+    "JALPAIGURI",
+    "JHARGRAM",
+    "KALIMPONG",
+    "KOLKATA",
+    "MALDA",
+    "MURSHIDABAD",
+    "NADIA",
+    "NORTH 24 PARGANAS",
+    "PASCHIM BARDHAMAN",
+    "PASCHIM MEDINIPUR",
+    "PURBA BARDHAMAN",
+    "PURBA MEDINIPUR",
+    "PURULIA",
+    "SOUTH 24 PARGANAS",
+    "UTTAR DINAJPUR",
+]
+
+export const DISTRICT_LIST = WB_DISTRICTS
