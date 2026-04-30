@@ -171,8 +171,7 @@ export default function Form({ onSuccess, onError }) {
         if (!form.district) e.district = 'District is required'
         if (isOther && !form.customDistrict.trim()) e.customDistrict = 'Please enter your district name'
         if (!form.center.trim()) e.center = 'Exam center is required'
-        if (!form.telegram.trim()) e.telegram = 'Telegram username is required'
-        else if (!/^[A-Z0-9_]{3,32}$/.test(form.telegram.replace('@', '')))
+        if (form.telegram.trim() && !/^[A-Z0-9_]{3,32}$/.test(form.telegram.replace('@', '')))
             e.telegram = 'Must be 3–32 characters (letters, numbers, underscore)'
         return e
     }
@@ -183,7 +182,8 @@ export default function Form({ onSuccess, onError }) {
         if (Object.keys(errs).length) { setErrors(errs); return }
         setLoading(true)
         try {
-            const telegram = form.telegram.startsWith('@') ? form.telegram : `@${form.telegram}`
+            const rawTg = form.telegram.trim()
+            const telegram = rawTg ? (rawTg.startsWith('@') ? rawTg : `@${rawTg}`) : null
             const { error } = await supabase.from('students').insert([{
                 name: form.name.trim(),
                 center: form.center.trim(),
@@ -268,7 +268,7 @@ export default function Form({ onSuccess, onError }) {
             </Field>
 
             {/* Telegram */}
-            <Field label="Telegram Username" required error={errors.telegram} hint="Others will contact you via Telegram">
+            <Field label="Telegram Username" error={errors.telegram} hint="Leave blank if you prefer not to share">
                 <div className="relative">
                     <span className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 text-sm select-none">@</span>
                     <input

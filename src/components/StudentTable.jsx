@@ -79,18 +79,24 @@ function StudentCard({ student, idx }) {
                     <div className="flex items-center justify-between gap-3">
                         <p className="text-stone-900 font-semibold text-sm">{student.name}</p>
 
-                        {/* Telegram */}
-                        <button
-                            onClick={openTelegram}
-                            className="flex items-center gap-1.5 bg-[#229ED9]/10 hover:bg-[#229ED9]/20
+                        {/* Telegram — only shown if provided */}
+                        {student.telegram ? (
+                            <button
+                                onClick={openTelegram}
+                                className="flex items-center gap-1.5 bg-[#229ED9]/10 hover:bg-[#229ED9]/20
                   text-[#229ED9] text-xs font-semibold px-3 py-1.5 rounded-xl transition-all
                   shrink-0 border border-[#229ED9]/20 hover:border-[#229ED9]/30"
-                        >
-                            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.026 9.54c-.146.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.889.68z" />
-                            </svg>
-                            <span>{student.telegram}</span>
-                        </button>
+                            >
+                                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.026 9.54c-.146.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.889.68z" />
+                                </svg>
+                                <span>{student.telegram}</span>
+                            </button>
+                        ) : (
+                            <span className="text-stone-300 text-xs px-3 py-1.5 rounded-xl border border-stone-100 shrink-0">
+                                No Telegram
+                            </span>
+                        )}
                     </div>
 
                     {/* Labeled rows */}
